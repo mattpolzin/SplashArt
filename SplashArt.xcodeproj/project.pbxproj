@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C939E0A716C0CEDB00209B38 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939E0A616C0CEDB00209B38 /* UIKit.framework */; };
+		C939E0A916C0CEDB00209B38 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939E0A816C0CEDB00209B38 /* Foundation.framework */; };
+		C939E0AB16C0CEDB00209B38 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939E0AA16C0CEDB00209B38 /* CoreGraphics.framework */; };
+		C939E0B116C0CEDB00209B38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C939E0AF16C0CEDB00209B38 /* InfoPlist.strings */; };
+		C939E0B316C0CEDB00209B38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C939E0B216C0CEDB00209B38 /* main.m */; };
+		C939E0B716C0CEDB00209B38 /* SplashArtAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C939E0B616C0CEDB00209B38 /* SplashArtAppDelegate.m */; };
+		C939E0B916C0CEDB00209B38 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C939E0B816C0CEDB00209B38 /* Default.png */; };
+		C939E0BB16C0CEDB00209B38 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C939E0BA16C0CEDB00209B38 /* Default@2x.png */; };
+		C939E0BD16C0CEDB00209B38 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C939E0BC16C0CEDB00209B38 /* Default-568h@2x.png */; };
+		C939E0C016C0CEDB00209B38 /* SplashArtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C939E0BF16C0CEDB00209B38 /* SplashArtViewController.m */; };
+		C939E0C316C0CEDB00209B38 /* SplashArtViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C939E0C116C0CEDB00209B38 /* SplashArtViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C939E0A316C0CEDB00209B38 /* SplashArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplashArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C939E0A616C0CEDB00209B38 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C939E0A816C0CEDB00209B38 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C939E0AA16C0CEDB00209B38 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C939E0AE16C0CEDB00209B38 /* SplashArt-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplashArt-Info.plist"; sourceTree = "<group>"; };
+		C939E0B016C0CEDB00209B38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C939E0B216C0CEDB00209B38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C939E0B416C0CEDB00209B38 /* SplashArt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplashArt-Prefix.pch"; sourceTree = "<group>"; };
+		C939E0B516C0CEDB00209B38 /* SplashArtAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashArtAppDelegate.h; sourceTree = "<group>"; };
+		C939E0B616C0CEDB00209B38 /* SplashArtAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashArtAppDelegate.m; sourceTree = "<group>"; };
+		C939E0B816C0CEDB00209B38 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C939E0BA16C0CEDB00209B38 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C939E0BC16C0CEDB00209B38 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C939E0BE16C0CEDB00209B38 /* SplashArtViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashArtViewController.h; sourceTree = "<group>"; };
+		C939E0BF16C0CEDB00209B38 /* SplashArtViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashArtViewController.m; sourceTree = "<group>"; };
+		C939E0C216C0CEDB00209B38 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SplashArtViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C939E0A016C0CEDB00209B38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939E0A716C0CEDB00209B38 /* UIKit.framework in Frameworks */,
+				C939E0A916C0CEDB00209B38 /* Foundation.framework in Frameworks */,
+				C939E0AB16C0CEDB00209B38 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C939E09A16C0CEDB00209B38 = {
+			isa = PBXGroup;
+			children = (
+				C939E0AC16C0CEDB00209B38 /* SplashArt */,
+				C939E0A516C0CEDB00209B38 /* Frameworks */,
+				C939E0A416C0CEDB00209B38 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C939E0A416C0CEDB00209B38 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C939E0A316C0CEDB00209B38 /* SplashArt.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C939E0A516C0CEDB00209B38 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C939E0A616C0CEDB00209B38 /* UIKit.framework */,
+				C939E0A816C0CEDB00209B38 /* Foundation.framework */,
+				C939E0AA16C0CEDB00209B38 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C939E0AC16C0CEDB00209B38 /* SplashArt */ = {
+			isa = PBXGroup;
+			children = (
+				C939E0B516C0CEDB00209B38 /* SplashArtAppDelegate.h */,
+				C939E0B616C0CEDB00209B38 /* SplashArtAppDelegate.m */,
+				C939E0BE16C0CEDB00209B38 /* SplashArtViewController.h */,
+				C939E0BF16C0CEDB00209B38 /* SplashArtViewController.m */,
+				C939E0C116C0CEDB00209B38 /* SplashArtViewController.xib */,
+				C939E0AD16C0CEDB00209B38 /* Supporting Files */,
+			);
+			path = SplashArt;
+			sourceTree = "<group>";
+		};
+		C939E0AD16C0CEDB00209B38 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C939E0AE16C0CEDB00209B38 /* SplashArt-Info.plist */,
+				C939E0AF16C0CEDB00209B38 /* InfoPlist.strings */,
+				C939E0B216C0CEDB00209B38 /* main.m */,
+				C939E0B416C0CEDB00209B38 /* SplashArt-Prefix.pch */,
+				C939E0B816C0CEDB00209B38 /* Default.png */,
+				C939E0BA16C0CEDB00209B38 /* Default@2x.png */,
+				C939E0BC16C0CEDB00209B38 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C939E0A216C0CEDB00209B38 /* SplashArt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C939E0C616C0CEDB00209B38 /* Build configuration list for PBXNativeTarget "SplashArt" */;
+			buildPhases = (
+				C939E09F16C0CEDB00209B38 /* Sources */,
+				C939E0A016C0CEDB00209B38 /* Frameworks */,
+				C939E0A116C0CEDB00209B38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SplashArt;
+			productName = SplashArt;
+			productReference = C939E0A316C0CEDB00209B38 /* SplashArt.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C939E09B16C0CEDB00209B38 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SplashArt;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Mathew Polzin";
+			};
+			buildConfigurationList = C939E09E16C0CEDB00209B38 /* Build configuration list for PBXProject "SplashArt" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C939E09A16C0CEDB00209B38;
+			productRefGroup = C939E0A416C0CEDB00209B38 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C939E0A216C0CEDB00209B38 /* SplashArt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C939E0A116C0CEDB00209B38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939E0B116C0CEDB00209B38 /* InfoPlist.strings in Resources */,
+				C939E0B916C0CEDB00209B38 /* Default.png in Resources */,
+				C939E0BB16C0CEDB00209B38 /* Default@2x.png in Resources */,
+				C939E0BD16C0CEDB00209B38 /* Default-568h@2x.png in Resources */,
+				C939E0C316C0CEDB00209B38 /* SplashArtViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C939E09F16C0CEDB00209B38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C939E0B316C0CEDB00209B38 /* main.m in Sources */,
+				C939E0B716C0CEDB00209B38 /* SplashArtAppDelegate.m in Sources */,
+				C939E0C016C0CEDB00209B38 /* SplashArtViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C939E0AF16C0CEDB00209B38 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C939E0B016C0CEDB00209B38 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C939E0C116C0CEDB00209B38 /* SplashArtViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C939E0C216C0CEDB00209B38 /* en */,
+			);
+			name = SplashArtViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C939E0C416C0CEDB00209B38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C939E0C516C0CEDB00209B38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C939E0C716C0CEDB00209B38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SplashArt/SplashArt-Prefix.pch";
+				INFOPLIST_FILE = "SplashArt/SplashArt-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C939E0C816C0CEDB00209B38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SplashArt/SplashArt-Prefix.pch";
+				INFOPLIST_FILE = "SplashArt/SplashArt-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C939E09E16C0CEDB00209B38 /* Build configuration list for PBXProject "SplashArt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C939E0C416C0CEDB00209B38 /* Debug */,
+				C939E0C516C0CEDB00209B38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C939E0C616C0CEDB00209B38 /* Build configuration list for PBXNativeTarget "SplashArt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C939E0C716C0CEDB00209B38 /* Debug */,
+				C939E0C816C0CEDB00209B38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C939E09B16C0CEDB00209B38 /* Project object */;
+}

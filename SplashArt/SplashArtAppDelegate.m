@@ -8,6 +8,7 @@
 
 #import "SplashArtAppDelegate.h"
 
+#import "SplashArtRootViewController.h"
 #import "SplashArtViewController.h"
 
 @implementation SplashArtAppDelegate
@@ -16,6 +17,7 @@
 {
 	[_window release];
 	[_viewController release];
+	[_splashArtViewController release];
     [super dealloc];
 }
 
@@ -23,9 +25,14 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-	self.viewController = [[[SplashArtViewController alloc] initWithNibName:@"SplashArtViewController" bundle:nil] autorelease];
+	self.viewController = [[[SplashArtRootViewController alloc] init] autorelease];
+	self.splashArtViewController = [[[SplashArtViewController alloc] init] autorelease];
 	self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+	
+	self.splashArtViewController.view.frame = self.window.bounds;
+	[self.window insertSubview:self.splashArtViewController.view atIndex:0];
+	
     return YES;
 }
 

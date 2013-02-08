@@ -17,7 +17,10 @@
 		C939E0BB16C0CEDB00209B38 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C939E0BA16C0CEDB00209B38 /* Default@2x.png */; };
 		C939E0BD16C0CEDB00209B38 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C939E0BC16C0CEDB00209B38 /* Default-568h@2x.png */; };
 		C939E0C016C0CEDB00209B38 /* SplashArtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C939E0BF16C0CEDB00209B38 /* SplashArtViewController.m */; };
-		C939E0C316C0CEDB00209B38 /* SplashArtViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C939E0C116C0CEDB00209B38 /* SplashArtViewController.xib */; };
+		C939E0CB16C0CF9E00209B38 /* SplashArtFlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = C939E0CA16C0CF9E00209B38 /* SplashArtFlipView.m */; };
+		C939E0CD16C0D64C00209B38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C939E0CC16C0D64C00209B38 /* QuartzCore.framework */; };
+		C939E0D116C1DE0D00209B38 /* SplashArtColorSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C939E0D016C1DE0D00209B38 /* SplashArtColorSelector.m */; };
+		C9EC1A8D16C47BE600C78D9D /* SplashArtRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EC1A8C16C47BE600C78D9D /* SplashArtRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +39,13 @@
 		C939E0BC16C0CEDB00209B38 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C939E0BE16C0CEDB00209B38 /* SplashArtViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashArtViewController.h; sourceTree = "<group>"; };
 		C939E0BF16C0CEDB00209B38 /* SplashArtViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashArtViewController.m; sourceTree = "<group>"; };
-		C939E0C216C0CEDB00209B38 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SplashArtViewController.xib; sourceTree = "<group>"; };
+		C939E0C916C0CF9E00209B38 /* SplashArtFlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashArtFlipView.h; sourceTree = "<group>"; };
+		C939E0CA16C0CF9E00209B38 /* SplashArtFlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashArtFlipView.m; sourceTree = "<group>"; };
+		C939E0CC16C0D64C00209B38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C939E0CF16C1DE0D00209B38 /* SplashArtColorSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashArtColorSelector.h; sourceTree = "<group>"; };
+		C939E0D016C1DE0D00209B38 /* SplashArtColorSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashArtColorSelector.m; sourceTree = "<group>"; };
+		C9EC1A8B16C47BE600C78D9D /* SplashArtRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashArtRootViewController.h; sourceTree = "<group>"; };
+		C9EC1A8C16C47BE600C78D9D /* SplashArtRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashArtRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C939E0CD16C0D64C00209B38 /* QuartzCore.framework in Frameworks */,
 				C939E0A716C0CEDB00209B38 /* UIKit.framework in Frameworks */,
 				C939E0A916C0CEDB00209B38 /* Foundation.framework in Frameworks */,
 				C939E0AB16C0CEDB00209B38 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +83,7 @@
 		C939E0A516C0CEDB00209B38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C939E0CC16C0D64C00209B38 /* QuartzCore.framework */,
 				C939E0A616C0CEDB00209B38 /* UIKit.framework */,
 				C939E0A816C0CEDB00209B38 /* Foundation.framework */,
 				C939E0AA16C0CEDB00209B38 /* CoreGraphics.framework */,
@@ -83,12 +94,17 @@
 		C939E0AC16C0CEDB00209B38 /* SplashArt */ = {
 			isa = PBXGroup;
 			children = (
+				C939E0CF16C1DE0D00209B38 /* SplashArtColorSelector.h */,
+				C939E0D016C1DE0D00209B38 /* SplashArtColorSelector.m */,
 				C939E0B516C0CEDB00209B38 /* SplashArtAppDelegate.h */,
 				C939E0B616C0CEDB00209B38 /* SplashArtAppDelegate.m */,
 				C939E0BE16C0CEDB00209B38 /* SplashArtViewController.h */,
 				C939E0BF16C0CEDB00209B38 /* SplashArtViewController.m */,
-				C939E0C116C0CEDB00209B38 /* SplashArtViewController.xib */,
 				C939E0AD16C0CEDB00209B38 /* Supporting Files */,
+				C939E0C916C0CF9E00209B38 /* SplashArtFlipView.h */,
+				C939E0CA16C0CF9E00209B38 /* SplashArtFlipView.m */,
+				C9EC1A8B16C47BE600C78D9D /* SplashArtRootViewController.h */,
+				C9EC1A8C16C47BE600C78D9D /* SplashArtRootViewController.m */,
 			);
 			path = SplashArt;
 			sourceTree = "<group>";
@@ -163,7 +179,6 @@
 				C939E0B916C0CEDB00209B38 /* Default.png in Resources */,
 				C939E0BB16C0CEDB00209B38 /* Default@2x.png in Resources */,
 				C939E0BD16C0CEDB00209B38 /* Default-568h@2x.png in Resources */,
-				C939E0C316C0CEDB00209B38 /* SplashArtViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +192,9 @@
 				C939E0B316C0CEDB00209B38 /* main.m in Sources */,
 				C939E0B716C0CEDB00209B38 /* SplashArtAppDelegate.m in Sources */,
 				C939E0C016C0CEDB00209B38 /* SplashArtViewController.m in Sources */,
+				C939E0CB16C0CF9E00209B38 /* SplashArtFlipView.m in Sources */,
+				C939E0D116C1DE0D00209B38 /* SplashArtColorSelector.m in Sources */,
+				C9EC1A8D16C47BE600C78D9D /* SplashArtRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +207,6 @@
 				C939E0B016C0CEDB00209B38 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C939E0C116C0CEDB00209B38 /* SplashArtViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C939E0C216C0CEDB00209B38 /* en */,
-			);
-			name = SplashArtViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -264,6 +274,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SplashArt/SplashArt-Prefix.pch";
 				INFOPLIST_FILE = "SplashArt/SplashArt-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -275,6 +286,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SplashArt/SplashArt-Prefix.pch";
 				INFOPLIST_FILE = "SplashArt/SplashArt-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -299,6 +311,7 @@
 				C939E0C816C0CEDB00209B38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

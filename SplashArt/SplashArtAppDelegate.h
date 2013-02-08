@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class SplashArtRootViewController;
 @class SplashArtViewController;
 
 @interface SplashArtAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) SplashArtViewController *viewController;
+@property (strong, nonatomic) SplashArtRootViewController *viewController;
+@property (strong, nonatomic) SplashArtViewController* splashArtViewController;
 
 @end

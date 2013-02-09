@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SplashArtColorSelector.h"
+#import "SplashArtPaletteSizeSelector.h"
+#import <OpenGLES/EAGL.h>
+#import "SplashArtOpenGLView.h"
+
+#define OPENGL_RENDER 0
 
 typedef enum {
 	PM_FLIP,
@@ -17,8 +22,6 @@ typedef enum {
 
 @interface SplashArtViewController : UIViewController
 {
-	NSMutableArray* splashArtViews;
-	
 	CGSize cellSize;
 	
 	NSMutableArray* randomColors;
@@ -29,7 +32,7 @@ typedef enum {
 	CGFloat cutoff;
 	UISlider* cutoffSlider;
 	
-	UISlider* colorPalletSizeSlider;
+	SplashArtPaletteSizeSelector* colorPalletSizeSlider;
 	
 	SplashArtColorSelector* colorSelector;
 	
@@ -37,6 +40,12 @@ typedef enum {
 	NSTimeInterval lastTouchTaken;
 	
 	UIPopoverController* popoverController;
+	
+#if OPENGL_RENDER
+	SplashArtOpenGLView* openGLView;
+#else
+	NSMutableArray* splashArtViews;
+#endif
 }
 
 @end

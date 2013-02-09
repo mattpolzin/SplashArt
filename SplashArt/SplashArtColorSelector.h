@@ -22,4 +22,8 @@
 
 - (void)setSelectedIndex:(NSUInteger)index;
 
++ (UIView*) generateColorPlateWithColors:(NSArray*)colors;
+
++ (UIView*) generateColorPlateWithColors:(NSUInteger)colorCount fromArray:(NSArray*)colors;
+
 @end

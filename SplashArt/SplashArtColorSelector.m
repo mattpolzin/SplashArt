@@ -27,34 +27,20 @@
 }
 
 - (void)generateColorPlateWithReplacement:(BOOL)replaceLastView;
-{	
-	UIView* colorPlate = [[UIView alloc] initWithFrame:self.bounds];
-	
-	CGFloat width = self.bounds.size.width / flipView.views.count;
-	CGFloat height = self.bounds.size.height;
-	
+{
 	NSUInteger count = flipView.views.count;
 	if (replaceLastView) {
 		count--;
 	}
 	
-	for (int ii = 0; ii < flipView.views.count; ii++) {
-		UIView* v = [flipView.views objectAtIndex:ii];
-		UIView* plateView = [[UIView alloc] initWithFrame:CGRectMake(ii * width, 0, width, height)];
-		plateView.backgroundColor = v.backgroundColor;
-		
-		[colorPlate addSubview:plateView];
-		
-		[plateView release];
-	}
+	UIView* colorPlate = [[self class] generateColorPlateWithColors:count fromArray:flipView.views];
+	colorPlate.frame = self.bounds;
 	
 	if (replaceLastView) {
 //		[flipView.views setObject:colorPlate atIndexedSubscript:count];
 	} else {
 		[flipView addViews:[NSArray arrayWithObject:colorPlate]];
 	}
-	
-	[colorPlate release];
 }
 
 @end
@@ -113,6 +99,47 @@
 	return flipView.views.count-1;
 }
 
+// accepts an array of UIColor objects /or/ UIView objects (in which case the
+// background color of each view is used).
++ (UIView*) generateColorPlateWithColors:(NSUInteger)colorCount fromArray:(NSArray*)colors
+{	
+	if (colorCount > colors.count) {
+		colorCount = colors.count;
+	}
+	
+	UIView* colorPlate = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+	
+	// take the ceiling so that no gaps are produced when the cells
+	// are autoscaled (because the cells do not have integer sizes).
+	CGFloat width = colorPlate.bounds.size.width / colorCount;
+	CGFloat height = colorPlate.bounds.size.height;
+	
+	for (int ii = 0; ii < colorCount; ii++) {
+		id colorObj = [colors objectAtIndex:ii];
+		UIView* plateView = [[UIView alloc] initWithFrame:CGRectMake(ii * width, 0, width + (ii < colorCount-1 ? 2 : 0), height)];
+		plateView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+		if (ii > 0) {
+			plateView.autoresizingMask |= UIViewAutoresizingFlexibleLeftMargin;
+		}
+		if (ii < colorCount-1) {
+			plateView.autoresizingMask |= UIViewAutoresizingFlexibleRightMargin;
+		}
+		plateView.backgroundColor = (UIColor*)([colorObj isKindOfClass:[UIView class]] ? [(UIView*)colorObj backgroundColor] : colorObj);
+		
+		[colorPlate addSubview:plateView];
+		
+		[plateView release];
+	}
+	
+	colorPlate.clipsToBounds = YES;
+	
+	return [colorPlate autorelease];
+}
+
++ (UIView*) generateColorPlateWithColors:(NSArray*)colors;
+{
+	return [self generateColorPlateWithColors:colors.count fromArray:colors];
+}
 
 - (void)dealloc
 {

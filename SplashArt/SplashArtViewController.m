@@ -48,6 +48,8 @@
 
 + (BOOL) iPad;
 
+- (void)fillRandomColorArray;
+
 @end
 
 @implementation SplashArtViewController (PrivateMethods)
@@ -55,16 +57,16 @@
 - (void)initSplashArtViewController
 {	
 	randomColors = [[NSMutableArray alloc] initWithCapacity:DEFAULT_NUM_RANDOM_COLORS];
-	for (int ii = 0; ii < DEFAULT_NUM_RANDOM_COLORS; ii++) {
-		UIColor* rndColor = [UIColor colorWithRed:((double)arc4random() / ARC4RANDOM_MAX) green:((double)arc4random() / ARC4RANDOM_MAX) blue:((double)arc4random() / ARC4RANDOM_MAX) alpha:1.0];
-		
-		[randomColors addObject:rndColor];
-	}
 	
-	splashArtViews = [[NSMutableArray alloc] initWithCapacity:DEFAULT_ROWS * DEFAULT_COLS];
+	[self fillRandomColorArray];
 	
 	CGRect parentViewBounds = self.view.bounds;
 	cellSize = CGSizeMake(parentViewBounds.size.width / DEFAULT_COLS, parentViewBounds.size.height / DEFAULT_ROWS);
+	
+#if OPENGL_RENDER
+	openGLView = [[SplashArtOpenGLView alloc] initWithFrame:self.view.bounds];
+#else
+	splashArtViews = [[NSMutableArray alloc] initWithCapacity:DEFAULT_ROWS * DEFAULT_COLS];
 	
 	for (int ii = 0; ii < DEFAULT_ROWS; ii++) {
 		for (int jj = 0; jj < DEFAULT_COLS; jj++) {
@@ -84,19 +86,25 @@
 			[safView release];
 		}
 	}
+#endif
 	
 	cutoff = DEFAULT_CUTOFF;
-	CGFloat margin = 10;
-	cutoffSlider = [[UISlider alloc] initWithFrame:CGRectMake(margin, margin + (60 - 44) / 2.0, 100, 44)];
+	
+	// view width, minus size of all controls, divided by number of controls
+	CGFloat margin = (self.view.bounds.size.width - 638) / 6;
+	
+	cutoffSlider = [[UISlider alloc] initWithFrame:CGRectMake(margin, margin + (60 - 44) / 2.0, 200, 44)];
 	[cutoffSlider setMinimumValue:cellSize.height];
 	[cutoffSlider setMaximumValue:300];
 	[cutoffSlider setValue:DEFAULT_CUTOFF];
 	[cutoffSlider addTarget:self action:@selector(cutoffSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+	[cutoffSlider setMinimumValueImage:[UIImage imageNamed:@"circle_small_icon"]];
+	[cutoffSlider setMaximumValueImage:[UIImage imageNamed:@"circle_icon"]];
 	
 	[self.view addSubview:cutoffSlider];
 	
 	colorSelector = [[SplashArtColorSelector buttonWithType:UIButtonTypeCustom] retain];
-	colorSelector.frame = CGRectMake(2*margin + 100, margin, 150, 60);
+	colorSelector.frame = CGRectMake(margin + cutoffSlider.frame.origin.x + cutoffSlider.frame.size.width, margin + (60-44)/2.0, 150, 44);
 	[colorSelector setBackgroundColors:DEFAULT_COLOR_PALLETE_SIZE fromArray:randomColors];
 	[colorSelector addTarget:self action:@selector(colorSelectionChanged:) forControlEvents:UIControlEventTouchUpInside];
 	
@@ -105,22 +113,25 @@
 	primaryMode = PM_FLIP;
 	[colorSelector setSelectedIndex:DEFAULT_COLOR_PALLETE_SIZE];
 	
-	colorPalletSizeSlider = [[UISlider alloc] initWithFrame:CGRectMake(3*margin + 250, margin + (60 - 44) / 2.0, 100, 44)];
+	colorPalletSizeSlider = [[SplashArtPaletteSizeSelector alloc] initWithFrame:CGRectMake(margin + colorSelector.frame.origin.x + colorSelector.frame.size.width, margin + (60 - 44) / 2.0, 200, 44)];
 	[colorPalletSizeSlider setMinimumValue:2];
 	[colorPalletSizeSlider setMaximumValue:DEFAULT_NUM_RANDOM_COLORS-1];
 	[colorPalletSizeSlider setValue:DEFAULT_COLOR_PALLETE_SIZE];
-	[colorPalletSizeSlider addTarget:self action:@selector(colorPalletSizeSliderValueChanged:) forControlEvents:UIControlEventTouchUpInside];
+	[colorPalletSizeSlider addTarget:self action:@selector(colorPalleteSizeSliderValueChanged:) forControlEvents:UIControlEventTouchUpInside];
+	[colorPalletSizeSlider setColors:DEFAULT_NUM_RANDOM_COLORS fromArray:randomColors];
 	
 	[self.view addSubview:colorPalletSizeSlider];
 	
-	UIButton* exportButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	exportButton.frame = CGRectMake(4*margin + 350, margin, 60, 60);
+	UIButton* exportButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[exportButton setImage:[UIImage imageNamed:@"share_icon"] forState:UIControlStateNormal];
+	exportButton.frame = CGRectMake(margin + colorPalletSizeSlider.frame.origin.x + colorPalletSizeSlider.frame.size.width, margin + (60-44)/2.0, 44, 44);
 	[exportButton addTarget:self action:@selector(saveToPhotoAlbum:) forControlEvents:UIControlEventTouchUpInside];
 	
 	[self.view addSubview:exportButton];
 	
-	UIButton* generatePalleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	generatePalleteButton.frame = CGRectMake(5*margin + 410, margin, 60, 60);
+	UIButton* generatePalleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[generatePalleteButton setImage:[UIImage imageNamed:@"recycle_icon"] forState:UIControlStateNormal];
+	generatePalleteButton.frame = CGRectMake(margin + exportButton.frame.origin.x + exportButton.frame.size.width, margin + (60-44)/2.0, 44, 44);
 	[generatePalleteButton addTarget:self action:@selector(generateNewColorPallete:) forControlEvents:UIControlEventTouchUpInside];
 	
 	[self.view addSubview:generatePalleteButton];
@@ -162,9 +173,13 @@
 	[colorSelector setBackgroundColors:newNumColors fromArray:randomColors];
 	
 	for (int ii = 0; ii < DEFAULT_ROWS * DEFAULT_COLS; ii++) {
+#if OPENGL_RENDER
+#error TODO
+#else
 		SplashArtFlipView* artView = (SplashArtFlipView*)[splashArtViews objectAtIndex:ii];
 		
 		[artView setBackgroundColors:newNumColors fromArray:randomColors];
+#endif
 	}
 	
 	[self colorSelectionChanged:self];
@@ -172,14 +187,22 @@
 
 - (void)renderInContext:(CGContextRef)context
 {
+#if OPENGL_RENDER
+#error TODO
+#else
 	SplashArtFlipView* v;
+#endif
 	CGRect rect;
 	UIColor* color;
 	
 	for (int ii = 0; ii < DEFAULT_ROWS; ii++) {
 		for (int jj = 0; jj < DEFAULT_COLS; jj++) {
+#if OPENGL_RENDER
+#error TODO
+#else
 			v = [splashArtViews objectAtIndex:[[self class] linearViewIndexForColumn:jj row:ii]];
 			color = v.currentView.backgroundColor;
+#endif
 			
 			rect = CGRectMake(ceilf(jj * cellSize.width), ceilf(ii * cellSize.height), ceilf(cellSize.width), ceilf(cellSize.height));
 			
@@ -199,13 +222,13 @@
 	CGFloat xOffset = 0;
 	CGFloat yOffset = 0;
 	
-	if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+	if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
 		CGFloat tmp = frame.size.width;
 		frame.size.width = frame.size.height;
 		frame.size.height = tmp;
 		xOffset = frame.size.width;
 		rotation = M_PI/2;
-	} else if(deviceOrientation == UIDeviceOrientationLandscapeRight) {
+	} else if(deviceOrientation == UIDeviceOrientationLandscapeLeft) {
 		CGFloat tmp = frame.size.width;
 		frame.size.width = frame.size.height;
 		frame.size.height = tmp;
@@ -227,7 +250,6 @@
 	}
 	
 	CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-//	[self.view.layer renderInContext:context];
 	[self renderInContext:context];
 	UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
 	
@@ -249,19 +271,29 @@
 	[avc release];
 }
 
-- (void)generateNewColorPallete:(id)sender
+- (void)fillRandomColorArray
 {
 	for (int ii = 0; ii < DEFAULT_NUM_RANDOM_COLORS; ii++) {
-		UIColor* rndColor = [UIColor colorWithRed:((double)arc4random() / ARC4RANDOM_MAX) green:((double)arc4random() / ARC4RANDOM_MAX) blue:((double)arc4random() / ARC4RANDOM_MAX) alpha:1.0];
+		UIColor* rndColor = [UIColor colorWithRed:0.05+0.9*((double)arc4random() / ARC4RANDOM_MAX) green:0.05+0.0*((double)arc4random() / ARC4RANDOM_MAX) blue:0.05+0.9*((double)arc4random() / ARC4RANDOM_MAX) alpha:1.0];
 		
 		[randomColors setObject:rndColor atIndexedSubscript:ii];
 	}
+}
+
+- (void)generateNewColorPallete:(id)sender
+{
+	[self fillRandomColorArray];
 	
+#if OPENGL_RENDER
+#error TODO
+#else
 	for (int ii = 0; ii < splashArtViews.count; ii++) {
 		[(SplashArtFlipView*)[splashArtViews objectAtIndex:ii] setBackgroundColors:colorSelector.colorCount fromArray:randomColors];
 	}
+#endif
 	
 	[colorSelector setBackgroundColors:colorSelector.colorCount fromArray:randomColors];
+	[colorPalletSizeSlider setColors:DEFAULT_NUM_RANDOM_COLORS fromArray:randomColors];
 }
 
 - (void)splashAtX:(CGFloat)x y:(CGFloat)y
@@ -278,6 +310,9 @@
 			
 			if (magnitude < cutoff) {
 				linearIndex = [[self class] linearViewIndexForColumn:jj row:ii];
+#if OPENGL_RENDER
+#error TODO
+#else
 				SplashArtFlipView* artView = (SplashArtFlipView*)[splashArtViews objectAtIndex:linearIndex];
 				if (primaryMode == PM_FLOP) {
 					[artView.nextView setBackgroundColor:colorSelector.currentColor];
@@ -286,6 +321,7 @@
 				} else { // PM_FLIP
 					[artView flipWithXRatio:-(diffY / magnitude) yRatio:(diffX / magnitude) duration:magnitude*DEFAULT_FALLOUT delay:0];
 				}
+#endif
 			}
 		}
 	}
@@ -396,7 +432,11 @@
 
 - (void)dealloc
 {
+#if OPENGL_RENDER
+	[openGLView release], openGLView = nil;
+#else
 	[splashArtViews release], splashArtViews = nil;
+#endif
 	[randomColors release], randomColors = nil;
 	[primaryModeButton release], primaryModeButton = nil;
 	[colorPalletSizeSlider release], colorPalletSizeSlider = nil;

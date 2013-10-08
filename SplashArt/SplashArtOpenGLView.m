@@ -47,10 +47,22 @@
 
 - (void)drawOpenGLFrame
 {
-	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	
-	
+	if (self.datasource) {
+		glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+		
+		CGSize gridDimensions = [self.datasource getNumColumnsAndRows];
+		
+		UIColor* color;
+		
+		for (int ii = 0; ii < gridDimensions.height; ii++) {
+			for (int jj = 0; jj < gridDimensions.width; jj++) {
+				color = [self.datasource colorForCellAtRow:jj andColumn:ii];
+				
+				
+			}
+		}
+	}
 }
 
 - (void)registerDisplayLink
@@ -69,6 +81,7 @@
 @end
 
 @implementation SplashArtOpenGLView
+@synthesize datasource;
 
 - (id)initWithFrame:(CGRect)frame
 {
